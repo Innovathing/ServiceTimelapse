@@ -1,6 +1,6 @@
 
 import argparse
-# import picamera
+import picamera
 import time
 
 parser = argparse.ArgumentParser(description='Take timelapse')
