@@ -8,6 +8,7 @@ parser.add_argument('time',
 					type=int,
 					help='time to wait between each picture (in seconds)')
 parser.add_argument('--dir',
+					dest='directory'
 					default="/var/www",
 					help='directoy where store pictures')
 args = parser.parse_args()
