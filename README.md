@@ -11,7 +11,7 @@ Une fois que le fichier ```/etc/init.d/timelapse``` existe, lancer ```insserv ti
 
 ## Options et configurations
 
-```--time XXX``` permet de spécifier le temps entre chaque prise de vue (en secondes)
-```--directory /var/www``` permet de spécifier le repertoire dans lequel stocker les photos
+ - ```--time XXX``` permet de spécifier le temps entre chaque prise de vue (en secondes)
+ - ```--directory /var/www``` permet de spécifier le repertoire dans lequel stocker les photos
 
 Pour modifier les options du daemon, il faut modifier directement la variable  ```DAEMON_OPTS``` dans  ```/etc/init.d/timelapse```.
