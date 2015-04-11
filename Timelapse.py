@@ -1,5 +1,6 @@
 
 import argparse
+import logging
 import picamera
 import time
 
@@ -13,16 +14,21 @@ parser.add_argument('-d', '--dir',
 					dest='directory',
 					default="/var/www",
 					help='directoy in which the pictures are stored')
+parser.add_argument('-l', '--logfile',
+					dest='logfile',
+					default="/var/www/timelapse.log",
+					help='file in which the logging things are printed')
 args = parser.parse_args()
 
-print "[+] dir : %s" % args.directory
-print "[+] time : %d" % args.time
-print "[+] launch timelapse"
+logging.basicConfig(filename=args.logfile, level=logging.DEBUG)
+logging.info("[+] dir : %s" % args.directory)
+logging.info("[+] time : %d" % args.time)
+logging.info("[+] launch timelapse")
 with picamera.PiCamera() as camera:
 	camera.resolution = (1280, 720)
 	camera.start_preview()
-	print "[+] camera OK"
+	logging.info("[+] camera OK")
 	for filename in camera.capture_continuous(args.directory + '/img{timestamp:%Y-%m-%d-%H-%M-%S}.jpg'):
-		print "[+] captured : %s" % filename
+		logging.info("[+] captured : %s" % filename)
 		time.sleep(args.time)
 
