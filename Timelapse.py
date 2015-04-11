@@ -30,7 +30,7 @@ with picamera.PiCamera() as camera:
 	camera.resolution = (1280, 720)
 	camera.start_preview()
 	logging.info("[+] camera OK")
-	for filename in camera.capture_continuous(args.directory + '/img{timestamp:%Y-%m-%d-%H-%M-%S}.jpg'):
+	for filename in camera.capture_continuous(args.directory + '/img-{counter:08d}-{timestamp:%Y-%m-%d-%H-%M-%S}.jpg'):
 		logging.info("[+] captured : %s" % filename)
 		time.sleep(args.time)
 
