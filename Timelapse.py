@@ -22,15 +22,16 @@ parser.add_argument('-l', '--logfile',
 					help='file in which the logging things are printed')
 args = parser.parse_args()
 
+timestamp = time.time()
 logging.basicConfig(filename=args.logfile, level=logging.DEBUG)
 logging.info("[+] dir : %s" % args.directory)
 logging.info("[+] time : %d" % args.time)
-logging.info("[+] launch timelapse")
+logging.info("[+] launch timelapse : %f" % timestamp)
 with picamera.PiCamera() as camera:
 	camera.resolution = (1280, 720)
 	camera.start_preview()
 	logging.info("[+] camera OK")
-	for filename in camera.capture_continuous(args.directory + '/img-{counter:08d}-{timestamp:%Y-%m-%d-%H-%M-%S}.jpg'):
+	for filename in camera.capture_continuous(args.directory + '/img-%f-{counter:08d}.jpg' % timestamp):
 		logging.info("[+] captured : %s" % filename)
 		time.sleep(args.time)
 
