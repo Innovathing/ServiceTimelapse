@@ -14,7 +14,7 @@
 DIR=/home/pi/ServiceTimelapse
 DAEMON=$DIR/Timelapse.py
 DAEMON_NAME=timelapse
-DAEMON_OPTS="--time 5 --directory /var/www/"
+DAEMON_OPTS="--time 5 --dir /var/www/"
 DAEMON_USER=root
 PIDFILE=/var/run/$DAEMON_NAME.pid
 
