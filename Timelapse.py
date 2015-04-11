@@ -22,7 +22,7 @@ with picamera.PiCamera() as camera:
 	camera.resolution = (1280, 720)
 	camera.start_preview()
 	print "[+] camera OK"
-	for filename in camera.capture_continuous(args.directory + '/img{timestamp:%Y-%m-%d-%H-%M}.jpg'):
+	for filename in camera.capture_continuous(args.directory + '/img{timestamp:%Y-%m-%d-%H-%M-%S}.jpg'):
 		print "[+] captured : %s" % filename
 		time.sleep(args.time)
 
