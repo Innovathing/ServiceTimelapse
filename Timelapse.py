@@ -33,5 +33,8 @@ with picamera.PiCamera() as camera:
 	logging.info("[+] camera OK")
 	for filename in camera.capture_continuous(args.directory + '/img-%f-{counter:08d}.jpg' % timestamp):
 		logging.info("[+] captured : %s" % filename)
+		camera.led = False
 		time.sleep(args.time)
+		camera.led = True
+		time.sleep(2)
 
